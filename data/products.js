@@ -26,6 +26,14 @@ class Product{
       return `$${formatCurrency(this.priceCents)}`
     }
 }
+class Clothing extends Product{
+    sizeChartLink;
+    constructor(productDetails){
+      super(productDetails);
+      this.sizeChartLink = productDetails.sizeChartLink;
+    }
+}
+
 
 export const products = [
   {
@@ -686,5 +694,10 @@ export const products = [
       "mens"
     ]
   }
-].map((productDetails) => new Product(productDetails));
+].map((productDetails) => {
+  if(productDetails.type === 'clothing'){
+    return new Clothing(productDetails);
+  }
+  return new Product(productDetails);
+});
 console.log(products);
