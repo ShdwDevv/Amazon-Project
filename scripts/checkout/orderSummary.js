@@ -73,7 +73,6 @@ export function renderOrderSummary(){
     function deliveryOptionsHTML(matchedProduct,cartItem){
         let html = '';
         deliveryOptions.forEach((deliveryOption) => {
-            console.log(deliveryOption);
             const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
             const today = dayjs();
             const deliveryDate = today.add(deliveryOption.deliveryDays,'days');

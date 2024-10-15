@@ -9,7 +9,6 @@ export function renderPaymentSummary(){
         const productId = cartItem.productId;
         let product = getProduct(productId);
         productPriceCents += product.priceCents * cartItem.quantity;
-        console.log(productPriceCents);
         const deliveryOptionID = cartItem.deliveryOptionId;
         const deliveryOption = getDeliveryOption(deliveryOptionID);
         shippingPriceCents += deliveryOption.priceCents;
