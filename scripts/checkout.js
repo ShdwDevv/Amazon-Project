@@ -5,6 +5,23 @@ import {renderPaymentSummary} from './checkout/paymentSummary.js';
 import {loadProducts,loadProductsFetch} from '../data/products.js';
 import {loadCart} from '../data/cart.js';
 
+async function loadPage(){
+    try{
+    await loadProductsFetch();
+        await new Promise((resolve,reject) => {
+            loadCart(() => {
+                // reject(); // to throw an error
+                resolve();
+            });
+        });
+    }catch(error){
+        console.log('unexpected error try again');
+    }
+    renderOrderSummary();
+    renderPaymentSummary();
+}
+loadPage();
+/*
 Promise.all([
     // new Promise((resolve) => {
     //     loadProducts(()=>{
@@ -22,7 +39,7 @@ Promise.all([
     renderOrderSummary();
     renderPaymentSummary();
 });
-
+*/
 /*
 // Added cart with promise
 new Promise((resolve) => {
